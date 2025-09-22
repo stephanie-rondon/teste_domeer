@@ -1,16 +1,14 @@
 import { LinearGradient } from 'expo-linear-gradient';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 
-export default function App() {
+export default function Tutorial() {
   return (
-    <View style={styles.container}>
-      <LinearGradient
-        colors={['rgba(255, 154, 139, 0.7)', 'rgba(255, 106, 136, 0.7)']}
-        style={styles.gradientBox}
-      >
-        <Text style={styles.text}>Exemplo de Gradiente</Text>
-      </LinearGradient>
-    </View>
+    <LinearGradient
+      colors={['rgba(255, 154, 139, 0.7)', 'rgba(40, 118, 151, 0.7)']}
+      style={styles.container}
+    >
+      <Text style={styles.text}>Exemplo de Gradiente</Text>
+    </LinearGradient>
   );
 }
 
@@ -19,14 +17,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f0f0f0',
-  },
-  gradientBox: {
-    width: 300,
-    height: 150,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 10,
   },
   text: {
     color: 'white',
