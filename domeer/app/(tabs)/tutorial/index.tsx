@@ -4,7 +4,7 @@ import { StyleSheet, Text } from 'react-native';
 export default function Tutorial() {
   return (
     <LinearGradient
-      colors={['#5e2bff80', '#fc6dab']}
+      colors={['rgba(252, 109, 171, 1)', 'rgba(94, 43, 255, 1)']}
       style={styles.container}
     >
       <Text style={styles.text}>Tutorial</Text>
