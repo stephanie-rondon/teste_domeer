@@ -4,10 +4,10 @@ import { StyleSheet, Text } from 'react-native';
 export default function Tutorial() {
   return (
     <LinearGradient
-      colors={['rgba(255, 154, 139, 0.7)', 'rgba(40, 118, 151, 0.7)']}
+      colors={['#5e2bff80', '#fc6dab']}
       style={styles.container}
     >
-      <Text style={styles.text}>Exemplo de Gradiente</Text>
+      <Text style={styles.text}>Tutorial</Text>
     </LinearGradient>
   );
 }
@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#145',
   },
   text: {
     color: 'white',

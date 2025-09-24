@@ -1,24 +1,59 @@
-import { useState } from "react";
-import { View, TextInput, StyleSheet, Pressable, Text } from "react-native";
+import { LinearGradient } from 'expo-linear-gradient';
+import { Formik } from 'formik';
+import { Pressable, StyleSheet, Text, TextInput } from "react-native";
+import * as Yup from 'yup';
+
+//validação com Yup
+const validationSchema = Yup.object().shape({
+  name: Yup.string()
+    .required('O nome de usuário é obrigatório'),
+  password: Yup.string()
+    .min(6, 'A senha deve ter pelo menos 6 caracteres')
+    .required('A senha é obrigatória')
+});
+
+type LoginFormValues = {
+  name: string;
+  password: string;
+};
 
 export default function Login() {
-  const [name, setName] = useState("")
-  const [password, setPassword] = useState("")
-  const handleLogin = () =>{
-    console.log("Name:", name);
-    console.log("Password:", password);
-  }
+  const handleLogin = (values: LoginFormValues) =>{
+    console.log("Name:", values.name);
+    console.log("Password:", values.password);
+  };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Página de Login</Text>
-      <TextInput style={styles.input} placeholder="Nome do usuário" onChangeText={setName} value={name}/>
-      <TextInput style={styles.input} placeholder="Senha" onChangeText={setPassword} value={password}/>
-      <Pressable style={styles.button} onPress={handleLogin}>
-        <Text style={styles.buttonText}>Login</Text>
-      </Pressable>
-    </View>
-    
+    <LinearGradient
+          colors={['#5e2bff80', '#fc6dab']}
+          style={styles.container}
+        >
+      <Text style={styles.title}>Vamos fazer o login?</Text>
+
+      <Formik
+        initialValues={{name: '', password: ''}}
+        validationSchema={validationSchema}
+        onSubmit={handleLogin}
+      >
+        {({ handleChange, handleBlur, handleSubmit, values, errors, touched}) => (
+          <>
+          <TextInput style={styles.input} placeholder="Nome do usuário" onChangeText={handleChange('name')} onBlur={handleBlur('name')} value={values.name}/>
+          {touched.name && errors.name &&(
+            <Text style={styles.textoErro}>{errors.name}</Text>
+          )}
+
+          <TextInput style={styles.input} placeholder="Senha" onChangeText={handleChange('password')} onBlur={handleBlur('password')} value={values.password} secureTextEntry/>
+          {touched.password && errors.password &&(
+            <Text style={styles.textoErro}>{errors.password}</Text>
+          )}
+
+          <Pressable style={styles.button} onPress={() => handleSubmit()}>
+           <Text style={styles.buttonText}>Login</Text>
+          </Pressable>
+          </>
+        )}
+      </Formik>
+    </LinearGradient>
   );
 }
 
@@ -53,5 +88,10 @@ const styles= StyleSheet.create({
   },
   buttonText: {
     color: "#145",
+  },
+  textoErro: {
+    color: '#145',
+    marginBottom: 10,
+    marginLeft: 5,
   }
 })
