@@ -1,28 +1,28 @@
-import { StyleSheet, Text, View } from "react-native";
+import { LinearGradient } from 'expo-linear-gradient';
+import { StyleSheet, Text } from 'react-native';
 
-export default function Mes() {
-
-
+export default function Tutorial() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Página de Mes</Text>
-    </View>
-    
+    <LinearGradient
+      colors={['rgba(94, 43, 255, 1)', 'rgba(252, 109, 171, 1)']} 
+      locations={[0, 0.49]}
+      style={styles.container}
+    >
+      <Text style={styles.text}>Mês</Text>
+    </LinearGradient>
   );
 }
 
-const styles= StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#145",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#145',
   },
-  title: {
-    fontSize: 22,
-    color: "#fff",
-    marginBottom: 20,
-    fontWeight: "bold",
-  }
-})
+  text: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+});
