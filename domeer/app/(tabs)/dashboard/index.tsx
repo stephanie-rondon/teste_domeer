@@ -1,10 +1,6 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import { StyleSheet, Text } from 'react-native';
-// REMOVA: import { useFonts } from 'expo-font';
-// REMOVA: import { ActivityIndicator } from 'react-native';
-
 export default function Tutorial() {
-  // A fonte já está carregada pelo _layout.tsx, não precisamos de 'useFonts' aqui.
 
   return (
     <LinearGradient
@@ -12,7 +8,7 @@ export default function Tutorial() {
       locations={[0.49, 0]}
       style={styles.container}
     >
-      {/* Apenas usa a fonte no estilo */}
+      {}
       <Text style={[styles.text, styles.copseText]}>
         Home - Fonte Copse
       </Text>
@@ -33,7 +29,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   copseText: {
-    // A chave 'Copse' agora funciona em todo o aplicativo!
+  
     fontFamily: 'Copse', 
     fontWeight: 'normal', 
   },
