@@ -1,7 +1,7 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
 import { FontAwesome } from '@expo/vector-icons'; // Certifique-se de ter este pacote instalado
+import { LinearGradient } from 'expo-linear-gradient';
+import React from 'react';
+import { Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 // --- Componente de Botão Redondo ---
 interface RoundButtonProps {
@@ -32,8 +32,8 @@ export default function Tutorial() {
 
   return (
     <LinearGradient
-      colors={['rgba(252, 109, 171, 1)', 'rgba(94, 43, 255, 1)']}
-      locations={[0.5, 0]}
+      colors={['rgba(94, 43, 255, 1)','rgba(252, 109, 171, 1)' ]}
+      locations={[0, 0.6]}
       style={styles.container}
     >
       {/* Conteúdo Central da Tela */}
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
 
   button: {
     // Estilo para o botão redondo
-    backgroundColor: '#34D399', // Uma cor de destaque diferente
+    backgroundColor: '#FFFEE5', // Uma cor de destaque diferente
     width: 55,
     height: 55,
     borderRadius: 27.5, // Metade da largura/altura para ser um círculo
