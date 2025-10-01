@@ -11,7 +11,7 @@ export default function Tutorial() {
       locations={[0.49, 0]}
       style={styles.container}
     >
-      {}
+      
       <View style={styles.headerContainer}>
         <Text style={[styles.text, styles.copseText, styles.headerText]}>
           Seu Mês
@@ -19,12 +19,14 @@ export default function Tutorial() {
         <View style={styles.underline}></View>
       </View>
 
-      {}
+      
       <Image 
         source={imageGrafico}
         style={styles.imageStyle}
       />
-      {}
+      
+      <View style={styles.whiteSquare}>
+      </View>
 
     </LinearGradient>
   );
@@ -56,6 +58,14 @@ const styles = StyleSheet.create({
     height: 120, 
     resizeMode: 'contain',
     marginTop: -40, 
+  },
+
+  whiteSquare: {
+    width: '80%', 
+    height: 300, 
+    backgroundColor: '#FFFEE5',
+    borderRadius: 15,
+    marginTop: -1,
   },
 
   text: {
