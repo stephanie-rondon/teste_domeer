@@ -1,16 +1,26 @@
 import { LinearGradient } from 'expo-linear-gradient';
-import { useState } from "react";
+import { Formik } from 'formik';
 import { Pressable, StyleSheet, Text, TextInput } from "react-native";
+import * as Yup from 'yup';
+
+const validationSchema = Yup.object().shape({
+  name: Yup.string()
+    .required('O nome de usuário é obrigatório'),
+  password: Yup.string()
+    .min(6, 'A senha deve ter pelo menos 6 caracteres')
+    .required('A senha é obrigatória')
+});
+
+type LoginFormValues = {
+  name: string;
+  password: string;
+};
 
 export default function Login() {
-  const [name, setName] = useState("")
-  const [password, setPassword] = useState("")
-  const [confirmPassword, setconfirmPassword] = useState("")
-  const handleLogin = () =>{
-    console.log("Name:", name);
-    console.log("Password:", password);
-    console.log("Password:", confirmPassword);
-  }
+  const handleLogin = (values: LoginFormValues) =>{
+    console.log("Name:", values.name);
+    console.log("Password:", values.password);
+  };
 
   return (
     <LinearGradient
@@ -18,12 +28,35 @@ export default function Login() {
           style={styles.container}
         >
       <Text style={styles.title}>Página de Cadastro</Text>
-      <TextInput style={styles.input} placeholder="Nome do usuário" onChangeText={setName} value={name}/>
-      <TextInput style={styles.input} placeholder="Senha" onChangeText={setPassword} value={password}/>
-      <TextInput style={styles.input} placeholder="Confirmar Senha*" onChangeText={setconfirmPassword} value={confirmPassword}/>
-      <Pressable style={styles.button} onPress={handleLogin}>
+
+      <Formik
+        initialValues={{name: '', password: ''}}
+        validationSchema={validationSchema}
+        onSubmit={handleLogin}
+      >
+        {({ handleChange, handleBlur, handleSubmit, values, errors, touched}) => (
+          <>
+          <TextInput style={styles.input} placeholder="Nome do usuário" onChangeText={handleChange('name')} onBlur={handleBlur('name')} value={values.name}/>
+          {touched.name && errors.name &&(
+            <Text style={styles.textoErro}>{errors.name}</Text>
+          )}
+
+          <TextInput style={styles.input} placeholder="Senha" onChangeText={handleChange('password')} onBlur={handleBlur('password')} value={values.password} secureTextEntry/>
+          {touched.password && errors.password &&(
+            <Text style={styles.textoErro}>{errors.password}</Text>
+          )}
+
+          <TextInput style={styles.input} placeholder="Confirmar senha*" onChangeText={handleChange('password')} onBlur={handleBlur('password')} value={values.password} secureTextEntry/>
+          {touched.password && errors.password &&(
+            <Text style={styles.textoErro}>{errors.password}</Text>
+          )}
+
+      <Pressable style={styles.button} onPress={() => handleSubmit()}>
         <Text style={styles.buttonText}>Cadastrar</Text>
       </Pressable>
+          </>
+      )}
+      </Formik>
       </LinearGradient>
 
   );
@@ -60,5 +93,10 @@ const styles= StyleSheet.create({
   },
   buttonText: {
     color: "#145",
+  },
+  textoErro: {
+    color: '#145',
+    marginBottom: 10,
+    marginLeft: 5,
   }
 })
