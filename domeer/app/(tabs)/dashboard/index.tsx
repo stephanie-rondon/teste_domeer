@@ -1,5 +1,5 @@
 import { LinearGradient } from 'expo-linear-gradient';
-import { StyleSheet, Text, Image } from 'react-native'; 
+import { StyleSheet, View, Text, Image } from 'react-native'; 
 
 const imageGrafico = require('../../../assets/images/Domeer-logo.png');
 const imageGrafico2 = require('../../../assets/images/icone-user.jpg');
@@ -9,13 +9,11 @@ export default function Tutorial() {
 
   return (
     <LinearGradient
-      colors={['rgba(252, 109, 171, 1)', 'rgba(94, 43, 255, 1)']}
+      colors={['rgba(94, 43, 255, 1)', 'rgba(252, 109, 171, 1)']} //252, 109, 171, 1
       locations={[0.49, 0]}
       style={styles.container}
     >
-      {}
 
-      {}
       <Image 
         source={imageGrafico}
         style={styles.imageStyle}
@@ -24,7 +22,6 @@ export default function Tutorial() {
         source={imageGrafico2} 
         style={styles.imageGrafico2} 
       />
-      {}
 
     </LinearGradient>
   );
@@ -52,7 +49,8 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     marginTop: -13, 
   },
-  
+
+
   imageGrafico2:{
    position: 'absolute',
    top: 20,
