@@ -23,6 +23,12 @@ export default function Tutorial() {
         style={styles.imageGrafico2} 
       />
 
+  <View style={styles.whiteSquare}>
+</View>
+
+<View style={styles.whiteSquare2}>
+</View>
+
     </LinearGradient>
   );
 }
@@ -50,7 +56,22 @@ const styles = StyleSheet.create({
     marginTop: -13, 
   },
 
-
+  whiteSquare: {
+    width: '40%', 
+    height: 150, 
+    backgroundColor: '#FFFEE5',
+    borderRadius: 15,
+    marginTop: -1,
+    marginRight: 800,
+  },
+  whiteSquare2: {
+    width: '40%', 
+    height: 150, 
+    backgroundColor: '#FFFEE5',
+    borderRadius: 15,
+    marginTop: -145,
+    marginRight: -800,
+  },
   imageGrafico2:{
    position: 'absolute',
    top: 20,
