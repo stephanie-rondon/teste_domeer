@@ -3,7 +3,6 @@ import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { FontAwesome } from '@expo/vector-icons';
 
-// --- Componente de Botão Redondo com Rótulo ---
 interface RoundButtonProps {
   iconName: keyof typeof FontAwesome.glyphMap;
   onPress: () => void;
@@ -19,6 +18,8 @@ const RoundButton: React.FC<RoundButtonProps> = ({ iconName, onPress, label }) =
         accessibilityLabel={label}
         accessibilityRole="button"
       >
+
+        
         <FontAwesome name={iconName} size={20} color="#c04cfd" />
       </TouchableOpacity>
       <Text style={styles.buttonLabel}>{label}</Text>
@@ -26,7 +27,6 @@ const RoundButton: React.FC<RoundButtonProps> = ({ iconName, onPress, label }) =
   );
 };
 
-// --- Componente Principal da Tela (Tutorial) ---
 export default function Tutorial() {
   const handleButtonPress = (buttonName: string) => {
     Alert.alert('Botão Pressionado', `Você clicou em: ${buttonName}`);
@@ -39,11 +39,8 @@ export default function Tutorial() {
         locations={[0, 0.6]}
         style={styles.gradient}
       >
-        <View style={styles.content}>
-          <Text style={styles.text}>DIA</Text>
-        </View>
+        <Text style={[styles.text, styles.copseFont]}>SEU DIA</Text>
 
-        {/* Botões flutuando sobre o gradiente */}
         <View style={styles.buttonContainer}>
           <RoundButton
             iconName="list"
@@ -66,7 +63,6 @@ export default function Tutorial() {
   );
 }
 
-// --- Estilos ---
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -81,8 +77,9 @@ const styles = StyleSheet.create({
   },
   text: {
     color: 'white',
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontSize: 30,
+    textAlign: 'center',
+    marginTop: 50,
   },
   buttonContainer: {
     flexDirection: 'row',
@@ -118,4 +115,9 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     textAlign: 'center',
   },
+
+  copseFont: {
+    fontFamily: 'Copse', 
+  },
 });
+
