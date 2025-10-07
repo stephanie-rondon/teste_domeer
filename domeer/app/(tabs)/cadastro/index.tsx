@@ -8,18 +8,23 @@ const validationSchema = Yup.object().shape({
     .required('O nome de usuário é obrigatório'),
   password: Yup.string()
     .min(6, 'A senha deve ter pelo menos 6 caracteres')
+    .required('A senha é obrigatória'),
+  confirmPassword: Yup.string()
+    .min(6, 'A senha deve ter pelo menos 6 caracteres')
     .required('A senha é obrigatória')
 });
 
 type LoginFormValues = {
   name: string;
   password: string;
+  confirmPassword: string;
 };
 
-export default function Login() {
+export default function Cadastrar() {
   const handleLogin = (values: LoginFormValues) =>{
     console.log("Name:", values.name);
     console.log("Password:", values.password);
+    console.log("Confirmar senha:", values.confirmPassword)
   };
 
   return (
@@ -30,7 +35,7 @@ export default function Login() {
       <Text style={styles.title}>Página de Cadastro</Text>
 
       <Formik
-        initialValues={{name: '', password: ''}}
+        initialValues={{name: '', password: '', confirmPassword: ''}}
         validationSchema={validationSchema}
         onSubmit={handleLogin}
       >
@@ -46,9 +51,9 @@ export default function Login() {
             <Text style={styles.textoErro}>{errors.password}</Text>
           )}
 
-          <TextInput style={styles.input} placeholder="Confirmar senha*" onChangeText={handleChange('password')} onBlur={handleBlur('password')} value={values.password} secureTextEntry/>
-          {touched.password && errors.password &&(
-            <Text style={styles.textoErro}>{errors.password}</Text>
+          <TextInput style={styles.input} placeholder="Confirmar senha*" onChangeText={handleChange('confirmPassword')} onBlur={handleBlur('confirmPassword')} value={values.confirmPassword} secureTextEntry/>
+          {touched.confirmPassword && errors.confirmPassword &&(
+            <Text style={styles.textoErro}>{errors.confirmPassword}</Text>
           )}
 
       <Pressable style={styles.button} onPress={() => handleSubmit()}>
