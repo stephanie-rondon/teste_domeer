@@ -23,10 +23,15 @@ export default function Tutorial() {
         style={styles.imageGrafico2} 
       />
 
-  <View style={styles.whiteSquare}>
+  <View style={styles.squaresContainer}>
+    <View style={styles.GatoSquare}></View>
+    <View style={styles.GatoSquare2}></View>
 </View>
 
-<View style={styles.whiteSquare2}>
+<View style={styles.MetasSquare}>
+</View>
+
+<View style={styles.GraficoSquare}>
 </View>
 
     </LinearGradient>
@@ -47,6 +52,12 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
 
+  squaresContainer: {
+     flexDirection: 'row',
+     width: '90%',
+     justifyContent: 'space-between',
+     marginTop: 20,
+    },
 
   imageStyle: {
 
@@ -56,22 +67,38 @@ const styles = StyleSheet.create({
     marginTop: -13, 
   },
 
-  whiteSquare: {
-    width: '40%', 
-    height: 150, 
-    backgroundColor: '#FFFEE5',
-    borderRadius: 15,
-    marginTop: -1,
-    marginRight: 800,
+  GatoSquare: {
+     width: '45%',
+     height: 150, 
+     backgroundColor: '#FFFEE5',
+     borderRadius: 15,
   },
-  whiteSquare2: {
-    width: '40%', 
-    height: 150, 
-    backgroundColor: '#FFFEE5',
-    borderRadius: 15,
-    marginTop: -145,
-    marginRight: -800,
+  GatoSquare2: {
+    width: '45%',
+  height: 150, 
+  backgroundColor: '#FFFEE5',
+   borderRadius: 15,
   },
+
+  MetasSquare: {
+    width: '90%',
+     height: 130, 
+     backgroundColor: '#FFFEE5', 
+    borderRadius: 15,
+     marginTop: 60,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  GraficoSquare:{
+    width: '90%',
+    height: 200, 
+    backgroundColor: '#FFFEE5', 
+   borderRadius: 15,
+    marginTop: 25,
+   justifyContent: 'center',
+   alignItems: 'center',
+  },
+
   imageGrafico2:{
    position: 'absolute',
    top: 20,
