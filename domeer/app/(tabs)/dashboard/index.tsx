@@ -1,8 +1,11 @@
 import { LinearGradient } from 'expo-linear-gradient';
-import { StyleSheet, View, Text, Image } from 'react-native'; 
+import { StyleSheet, View, Text, Image, ScrollView } from 'react-native'; 
 
 const imageGrafico = require('../../../assets/images/Domeer-logo.png');
 const imageGrafico2 = require('../../../assets/images/icone-user.jpg');
+const imagebobao = require('../../../assets/images/Gatobobao.png');
+const imagedia = require('../../../assets/images/Gatodia.png');
+const imagemes = require('../../../assets/images/Gatomes.png');
  
 
 export default function Tutorial() {
@@ -13,6 +16,7 @@ export default function Tutorial() {
       locations={[0.49, 0]}
       style={styles.container}
     >
+       <ScrollView contentContainerStyle={styles.RolarContent}>
 
       <Image 
         source={imageGrafico}
@@ -23,9 +27,29 @@ export default function Tutorial() {
         style={styles.imageGrafico2} 
       />
 
+  
+
   <View style={styles.squaresContainer}>
-    <View style={styles.GatoSquare}></View>
-    <View style={styles.GatoSquare2}></View>
+    <View style={styles.GatoSquare}>
+
+    <Image 
+        source={imagebobao} 
+        style={styles.imagebobao} 
+      />
+
+
+<Image 
+        source={imagedia} 
+        style={styles.imagedia} 
+      />
+    </View>
+    <View style={styles.GatoSquare2}>
+
+    <Image 
+        source={imagemes} 
+        style={styles.imagemes} 
+      />
+    </View>
 </View>
 
 <View style={styles.MetasSquare}>
@@ -33,7 +57,7 @@ export default function Tutorial() {
 
 <View style={styles.GraficoSquare}>
 </View>
-
+</ScrollView>
     </LinearGradient>
   );
 }
@@ -41,10 +65,14 @@ export default function Tutorial() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'flex-start',
-    alignItems: 'center',
   },
 
+  RolarContent: {
+  flexGrow: 1,
+  alignItems: 'center',
+  paddingBottom: 90,
+  },
+    
   headerContainer: {
     paddingTop: 25, 
     width: '80%', 
@@ -72,12 +100,14 @@ const styles = StyleSheet.create({
      height: 150, 
      backgroundColor: '#FFFEE5',
      borderRadius: 15,
+     position: 'relative',
   },
   GatoSquare2: {
     width: '45%',
   height: 150, 
   backgroundColor: '#FFFEE5',
    borderRadius: 15,
+   position: 'relative',
   },
 
   MetasSquare: {
@@ -94,7 +124,7 @@ const styles = StyleSheet.create({
     height: 200, 
     backgroundColor: '#FFFEE5', 
    borderRadius: 15,
-    marginTop: 25,
+    marginTop: 50,
    justifyContent: 'center',
    alignItems: 'center',
   },
@@ -107,6 +137,33 @@ const styles = StyleSheet.create({
    height: 50,
    borderRadius : 20,
   },
+
+  imagebobao:{
+    position: 'absolute',
+    top: -60,
+    left: 30,
+    width: 110,
+    height: 90,
+    borderRadius : 20,
+   },
+
+   imagemes:{
+    position: 'absolute',
+    top: -19,
+    left: 50,
+    width: 110,
+    height: 200,
+    borderRadius : 20,
+   },
+
+   imagedia:{
+    position: 'absolute',
+    top: -19,
+    left: 40,
+    width: 110,
+    height: 200,
+    borderRadius : 20,
+   },
 
   text: {
     color: 'white',
