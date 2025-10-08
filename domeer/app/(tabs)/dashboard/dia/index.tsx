@@ -195,6 +195,8 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 30,
     textAlign: 'center',
+    
+
     marginBottom: 35, // Espaço entre o título e o calendário
   },
   copseFont: {
@@ -208,7 +210,7 @@ const styles = StyleSheet.create({
     marginBottom: 30, // Espaço após o calendário
   },
   dayItem: {
-    width: DAY_WIDTH,
+    width: 65,
     height: 60,
     justifyContent: 'center',
     alignItems: 'center',
