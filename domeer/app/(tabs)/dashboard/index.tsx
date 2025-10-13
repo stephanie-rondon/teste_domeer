@@ -6,6 +6,7 @@ const imageGrafico2 = require('../../../assets/images/icone-user.jpg');
 const imagebobao = require('../../../assets/images/Gatobobao.png');
 const imagedia = require('../../../assets/images/Gatodia.png');
 const imagemes = require('../../../assets/images/Gatomes.png');
+const imagemetas = require('../../../assets/images/Gatometas.png');
  
 
 export default function Tutorial() {
@@ -52,9 +53,13 @@ export default function Tutorial() {
     </View>
 </View>
 
-<View style={styles.MetasSquare}>
-</View>
+<View style={styles.imagemetasconteiner}>
+<Image 
+        source={imagemetas} 
+        style={styles.imagemetas} 
+      />
 
+</View>
 <View style={styles.GraficoSquare}>
 </View>
 </ScrollView>
@@ -110,15 +115,21 @@ const styles = StyleSheet.create({
    position: 'relative',
   },
 
-  MetasSquare: {
-    width: '90%',
-     height: 130, 
-     backgroundColor: '#FFFEE5', 
-    borderRadius: 15,
-     marginTop: 60,
-    justifyContent: 'center',
-    alignItems: 'center',
+  imagemetas: {
+    width: '100%',
+     height: '100%', 
+     resizeMode: 'cover',
   },
+
+  imagemetasconteiner: {
+    width: '90%',
+     height: 350, 
+    borderRadius: 140,
+     marginTop: -50,
+     alignItems: 'center',
+     overflow: 'hidden',
+  },
+
   GraficoSquare:{
     width: '90%',
     height: 200, 
