@@ -8,7 +8,7 @@ export default function User() {
       locations={[0.5, 0]} //aqui tu muda o nivel do degrade, se aumentar o primmeiro numero, a primeira cor fica maior, segundo numero, segunda cor..
       style={styles.container}
     >
-      <Text style={styles.text}>Usuário</Text>
+      <Text style={styles.text}>Usuários</Text>
     </LinearGradient>
   );
 }
