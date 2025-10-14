@@ -117,18 +117,21 @@ const styles = StyleSheet.create({
 
   imagemetas: {
     width: '100%',
-     height: '100%', 
-     resizeMode: 'cover',
+     height: 250,
+    resizeMode: 'contain',
   },
 
   imagemetasconteiner: {
     width: '90%',
-     height: 350, 
-    borderRadius: 140,
-     marginTop: -50,
-     alignItems: 'center',
-     overflow: 'hidden',
+    height: 250,
+    borderRadius: 25,
+    marginTop: 70,
+    alignItems: 'center',
+    justifyContent: 'center',
+    overflow: 'hidden',
+    backgroundColor: '#FFFEE5',
   },
+  
 
   GraficoSquare:{
     width: '90%',
