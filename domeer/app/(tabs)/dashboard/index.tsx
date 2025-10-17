@@ -1,5 +1,5 @@
 import { LinearGradient } from 'expo-linear-gradient';
-import { Image, ScrollView, StyleSheet, View } from 'react-native';
+import { Image, ScrollView,Text, StyleSheet, View } from 'react-native';
 
 const imageLogo = require('../../../assets/images/Domeer-logo.png');
 const imageicone = require('../../../assets/images/icone-user.jpg');
@@ -45,6 +45,11 @@ export default function Tutorial() {
         source={imagedia} 
         style={styles.imagedia} 
       />
+
+    <Text style={[styles.copseText, styles.headerText, styles.GatoSquareText]}>
+          SEU MÊS
+        </Text>
+        
     </View>
     <View style={styles.GatoSquare2}>
 
@@ -52,6 +57,11 @@ export default function Tutorial() {
         source={imagemes} 
         style={styles.imagemes} 
       />
+
+<Text style={[styles.copseText, styles.headerText, styles.GatoSquare2Text]}>
+          SEU DIA
+        </Text>
+
     </View>
 </View>
 
@@ -59,6 +69,9 @@ export default function Tutorial() {
         source={imagemetas} 
         style={styles.imagemetas} 
       />
+      <Text style={[styles.copseText, styles.headerText, styles.metasText]}>
+          METAS CONCLUIDAS
+        </Text>
 
 <View style={styles.GraficoSquare}>
 
@@ -82,7 +95,7 @@ const styles = StyleSheet.create({
   alignItems: 'center',
   paddingBottom: 90,
   },
-    
+
   headerContainer: {
     paddingTop: 25, 
     width: '80%', 
@@ -95,6 +108,17 @@ const styles = StyleSheet.create({
      width: '90%',
      justifyContent: 'space-between',
      marginTop: 20,
+    },
+
+    text: {
+      color: 'white',
+      fontSize: 20,
+      fontWeight: 'bold',
+    },
+  
+    copseText: {
+      fontFamily: 'Copse', 
+      fontWeight: 'normal', 
     },
 
   imageStyle: {
@@ -111,19 +135,45 @@ const styles = StyleSheet.create({
      backgroundColor: '#FFFEE5',
      borderRadius: 15,
      position: 'relative',
+     justifyContent: 'flex-end',
+     alignItems: 'center',
+     paddingBottom: 10,
   },
+
   GatoSquare2: {
     width: '45%',
   height: 150, 
   backgroundColor: '#FFFEE5',
    borderRadius: 15,
    position: 'relative',
+   justifyContent: 'flex-end',
+   alignItems: 'center',
+   paddingBottom: 10,
+  },
+
+  GatoSquareText: {
+    color: '#ffffff',
+    fontSize: 20,
+    top: 50,
+  },
+
+  metasText: {
+    color: '#ffffff',
+    fontSize: 15,
+    top: -140,
+  },
+
+  GatoSquare2Text: {
+    color: '#ffffff',
+    fontSize: 20,
+    top: 50,
   },
 
   imagemetas: {
     width: 470,
      height: 200,
      left: -10, 
+     top: 10,
   },
   
   imagegrafico: {
@@ -155,37 +205,37 @@ const styles = StyleSheet.create({
   imagebobao:{
     position: 'absolute',
     top: -60,
-    left: -10,
-    width: 200,
+    left: 5,
+    width: 180,
     height: 90,
     borderRadius : 20,
    },
 
    imagemes:{
     position: 'absolute',
-    top: -60,
+    top: -44,
     left: 10,
-    width: 190,
-    height: 250,
+    width: 170,
+    height: 230,
     borderRadius : 20,
    },
 
    imagedia:{
     position: 'absolute',
-    top: -60,
+    top: -45,
     left: 20,
-    width: 190,
-    height: 250,
+    width: 170,
+    height: 230,
     borderRadius : 20,
    },
 
-  text: {
+  Text: {
     color: 'white',
     fontSize: 20,
     fontWeight: 'bold',
   },
 
-  copseText: {
+  CopseText: {
     fontFamily: 'Copse', 
     fontWeight: 'normal', 
   },
