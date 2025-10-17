@@ -1,12 +1,14 @@
 import { LinearGradient } from 'expo-linear-gradient';
-import { StyleSheet, View, Text, Image, ScrollView } from 'react-native'; 
+import { Image, ScrollView, StyleSheet, View } from 'react-native';
 
-const imageGrafico = require('../../../assets/images/Domeer-logo.png');
-const imageGrafico2 = require('../../../assets/images/icone-user.jpg');
+const imageLogo = require('../../../assets/images/Domeer-logo.png');
+const imageicone = require('../../../assets/images/icone-user.jpg');
 const imagebobao = require('../../../assets/images/Gatobobao.png');
 const imagedia = require('../../../assets/images/Gatodia.png');
 const imagemes = require('../../../assets/images/Gatomes.png');
 const imagemetas = require('../../../assets/images/Gatometas.png');
+const imagegrafico = require('../../../assets/images/gatopendurado.png');
+
  
 
 export default function Tutorial() {
@@ -20,11 +22,11 @@ export default function Tutorial() {
        <ScrollView contentContainerStyle={styles.RolarContent}>
 
       <Image 
-        source={imageGrafico}
+        source={imageLogo}
         style={styles.imageStyle}
       />
      <Image 
-        source={imageGrafico2} 
+        source={imageicone} 
         style={styles.imageGrafico2} 
       />
 
@@ -53,14 +55,17 @@ export default function Tutorial() {
     </View>
 </View>
 
-<View style={styles.imagemetasconteiner}>
 <Image 
         source={imagemetas} 
         style={styles.imagemetas} 
       />
 
-</View>
 <View style={styles.GraficoSquare}>
+
+<Image 
+        source={imagegrafico} 
+        style={styles.imagegrafico} 
+      />
 </View>
 </ScrollView>
     </LinearGradient>
@@ -116,28 +121,23 @@ const styles = StyleSheet.create({
   },
 
   imagemetas: {
-    width: '100%',
-     height: 250,
-    resizeMode: 'contain',
-  },
-
-  imagemetasconteiner: {
-    width: '90%',
-    height: 250,
-    borderRadius: 25,
-    marginTop: 70,
-    alignItems: 'center',
-    justifyContent: 'center',
-    overflow: 'hidden',
-    backgroundColor: '#FFFEE5',
+    width: 470,
+     height: 200,
+     left: -10, 
   },
   
+  imagegrafico: {
+    width: 200,
+     height: 200,
+    left: -170,
+    top: -80,
 
+  },
   GraficoSquare:{
-    width: '90%',
-    height: 200, 
+    width: '85%',
+    height: 270, 
     backgroundColor: '#FFFEE5', 
-   borderRadius: 15,
+   borderRadius: 59,
     marginTop: 50,
    justifyContent: 'center',
    alignItems: 'center',
@@ -155,27 +155,27 @@ const styles = StyleSheet.create({
   imagebobao:{
     position: 'absolute',
     top: -60,
-    left: 30,
-    width: 110,
+    left: -10,
+    width: 200,
     height: 90,
     borderRadius : 20,
    },
 
    imagemes:{
     position: 'absolute',
-    top: -19,
-    left: 50,
-    width: 110,
-    height: 200,
+    top: -60,
+    left: 10,
+    width: 190,
+    height: 250,
     borderRadius : 20,
    },
 
    imagedia:{
     position: 'absolute',
-    top: -19,
-    left: 40,
-    width: 110,
-    height: 200,
+    top: -60,
+    left: 20,
+    width: 190,
+    height: 250,
     borderRadius : 20,
    },
 
