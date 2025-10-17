@@ -170,21 +170,21 @@ const styles = StyleSheet.create({
   },
 
   imagemetas: {
-    width: 470,
-     height: 200,
-     left: -10, 
+    width: 460,
+     height: 190,
+     left: -5, 
      top: 10,
   },
   
   imagegrafico: {
     width: 200,
      height: 200,
-    left: -170,
+    left: -150,
     top: -80,
 
   },
   GraficoSquare:{
-    width: '85%',
+    width: '80%',
     height: 270, 
     backgroundColor: '#FFFEE5', 
    borderRadius: 59,
