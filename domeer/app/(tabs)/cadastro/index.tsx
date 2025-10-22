@@ -14,60 +14,91 @@ const validationSchema = Yup.object().shape({
     .required('A senha é obrigatória')
 });
 
-type LoginFormValues = {
+type RegisterFormValues = {
   name: string;
   password: string;
   confirmPassword: string;
 };
 
 export default function Cadastrar() {
-  const handleLogin = (values: LoginFormValues) =>{
-    console.log("Name:", values.name);
-    console.log("Password:", values.password);
-    console.log("Confirmar senha:", values.confirmPassword)
+  const handleRegister = async (values: RegisterFormValues) => {
+    if (values.password !== values.confirmPassword) {
+      alert('As senhas não coincidem!');
+      return;
+    }
+
+    try {
+      const res = await fetch(`http://localhost:3001/users?username=${values.name}`);
+      const existingUsers = await res.json();
+
+      if (existingUsers.length > 0) {
+        alert('Usuário já existe!');
+        return;
+      }
+
+      const response = await fetch('http://localhost:3001/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: values.name,
+          password: values.password,
+        }),
+      });
+
+      if (response.ok) {
+        alert('Cadastro realizado com sucesso!');
+      } else {
+        alert('Erro no cadastro');
+      }
+    } catch (error) {
+      console.error('Erro ao cadastrar:', error);
+      alert('Erro na comunicação com o servidor');
+    }
   };
 
   return (
     <LinearGradient
-          colors={['#5e2bff80', '#fc6dab']}
-          style={styles.container}
-        >
+      colors={['#5e2bff80', '#fc6dab']}
+      style={styles.container}
+    >
       <Text style={styles.title}>Página de Cadastro</Text>
 
       <Formik
-        initialValues={{name: '', password: '', confirmPassword: ''}}
+        initialValues={{ name: '', password: '', confirmPassword: '' }}
         validationSchema={validationSchema}
-        onSubmit={handleLogin}
+        onSubmit={handleRegister}
       >
-        {({ handleChange, handleBlur, handleSubmit, values, errors, touched}) => (
+        {({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
           <>
-          <TextInput style={styles.input} placeholder="Nome do usuário" onChangeText={handleChange('name')} onBlur={handleBlur('name')} value={values.name}/>
-          {touched.name && errors.name &&(
-            <Text style={styles.textoErro}>{errors.name}</Text>
-          )}
+            <TextInput style={styles.input} placeholder="Nome do usuário" onChangeText={handleChange('name')} onBlur={handleBlur('name')} value={values.name} />
+            {touched.name && errors.name && (
+              <Text style={styles.textoErro}>{errors.name}</Text>
+            )}
 
-          <TextInput style={styles.input} placeholder="Senha" onChangeText={handleChange('password')} onBlur={handleBlur('password')} value={values.password} secureTextEntry/>
-          {touched.password && errors.password &&(
-            <Text style={styles.textoErro}>{errors.password}</Text>
-          )}
+            <TextInput style={styles.input} placeholder="Senha" onChangeText={handleChange('password')} onBlur={handleBlur('password')} value={values.password} secureTextEntry />
+            {touched.password && errors.password && (
+              <Text style={styles.textoErro}>{errors.password}</Text>
+            )}
 
-          <TextInput style={styles.input} placeholder="Confirmar senha*" onChangeText={handleChange('confirmPassword')} onBlur={handleBlur('confirmPassword')} value={values.confirmPassword} secureTextEntry/>
-          {touched.confirmPassword && errors.confirmPassword &&(
-            <Text style={styles.textoErro}>{errors.confirmPassword}</Text>
-          )}
+            <TextInput style={styles.input} placeholder="Confirmar senha*" onChangeText={handleChange('confirmPassword')} onBlur={handleBlur('confirmPassword')} value={values.confirmPassword} secureTextEntry />
+            {touched.confirmPassword && errors.confirmPassword && (
+              <Text style={styles.textoErro}>{errors.confirmPassword}</Text>
+            )}
 
-      <Pressable style={styles.button} onPress={() => handleSubmit()}>
-        <Text style={styles.buttonText}>Cadastrar</Text>
-      </Pressable>
+            <Pressable style={styles.button} onPress={() => handleSubmit()}>
+              <Text style={styles.buttonText}>Cadastrar</Text>
+            </Pressable>
           </>
-      )}
+        )}
       </Formik>
-      </LinearGradient>
+    </LinearGradient>
 
   );
 }
 
-const styles= StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#145",
@@ -83,11 +114,11 @@ const styles= StyleSheet.create({
   },
   input: {
     backgroundColor: "#fff",
-    width: 200, 
+    width: 200,
     height: 40,
     marginBottom: 10,
     padding: 10,
-    borderRadius: 10, 
+    borderRadius: 10,
   },
   button: {
     backgroundColor: "#fff",

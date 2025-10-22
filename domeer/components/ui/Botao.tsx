@@ -16,14 +16,14 @@ export function Botao({ texto, onPress }: BotaoProps) {
 
 const styles = StyleSheet.create({
   botao: {
-    backgroundColor: 'rgba(252, 109, 171, 1)', // vermelho Netflix
+    backgroundColor: '#FFFEE5',
     paddingVertical: 12,
     paddingHorizontal: 25,
     borderRadius: 5,
     marginVertical: 8,
   },
   texto: {
-    color: 'white',
+    color: '#c04cfd',
     fontWeight: 'bold',
     fontSize: 16,
     textAlign: 'center',
