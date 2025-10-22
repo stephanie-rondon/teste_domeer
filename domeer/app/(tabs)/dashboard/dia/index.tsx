@@ -3,14 +3,12 @@ import { LinearGradient } from 'expo-linear-gradient';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { Alert, Dimensions, FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-// Certifique-se de que o 'moment' está configurado para o português, se necessário
+
 import 'moment/locale/pt-br';
-moment.locale('pt-br'); 
+moment.locale('pt-br');
 
 const { width } = Dimensions.get('window');
-const DAY_WIDTH = width / 7; // Ajusta para mostrar aproximadamente 7 dias
-
-// --- Tipos de Props ---
+const DAY_WIDTH = width / 7;
 
 interface RoundButtonProps {
   iconName: keyof typeof FontAwesome.glyphMap;
@@ -19,9 +17,9 @@ interface RoundButtonProps {
 }
 
 interface DayData {
-  date: string; // Ex: '2025-10-08'
-  dayOfWeek: string; // Ex: 'Qua'
-  dayOfMonth: string; // Ex: '08'
+  date: string;
+  dayOfWeek: string;
+  dayOfMonth: string;
 }
 
 interface CalendarDayProps {
@@ -29,8 +27,6 @@ interface CalendarDayProps {
   isSelected: boolean;
   onSelectDay: (date: string) => void;
 }
-
-// --- Componente RoundButton (Mantido) ---
 
 const RoundButton: React.FC<RoundButtonProps> = ({ iconName, onPress, label }) => {
   return (
@@ -48,11 +44,9 @@ const RoundButton: React.FC<RoundButtonProps> = ({ iconName, onPress, label }) =
   );
 };
 
-// --- Componente CalendarDay (Novo) ---
-
 const CalendarDay: React.FC<CalendarDayProps> = ({ dayData, isSelected, onSelectDay }) => {
   const isToday = moment().format('YYYY-MM-DD') === dayData.date;
-  
+
   return (
     <TouchableOpacity
       style={[
@@ -72,44 +66,49 @@ const CalendarDay: React.FC<CalendarDayProps> = ({ dayData, isSelected, onSelect
   );
 };
 
-// --- Função para Gerar Datas ---
+// Abreviações personalizadas
+const diasSemanaAbreviados: { [key: string]: string } = {
+  'domingo': 'Dom',
+  'segunda-feira': 'Seg',
+  'terça-feira': 'Ter',
+  'quarta-feira': 'Qua',
+  'quinta-feira': 'Qui',
+  'sexta-feira': 'Sext',
+  'sábado': 'Sab',
+};
 
 const generateDates = (numberOfDays: number): DayData[] => {
   const today = moment();
   const dates: DayData[] = [];
-  
-  // Define o ponto de partida para alguns dias atrás (opcional, para permitir rolagem para trás)
   const startDate = moment(today).subtract(numberOfDays / 2, 'days');
-  
+
   for (let i = 0; i < numberOfDays; i++) {
     const date = moment(startDate).add(i, 'days');
+    const nomeCompleto = date.format('dddd');
+    const abreviado = diasSemanaAbreviados[nomeCompleto.toLowerCase()] || nomeCompleto;
+
     dates.push({
       date: date.format('YYYY-MM-DD'),
-      dayOfWeek: date.format('ddd'), // Dia da semana abreviado (Seg, Ter, Qua...)
-      dayOfMonth: date.format('DD'), // Dia do mês (01, 02, 08...)
+      dayOfWeek: abreviado,
+      dayOfMonth: date.format('DD'),
     });
   }
+
   return dates;
 };
 
-// --- Componente Principal Tutorial ---
-
 export default function Tutorial() {
   const [selectedDate, setSelectedDate] = useState(moment().format('YYYY-MM-DD'));
-  const allDates = generateDates(100); // Gera 100 dias (50 para trás e 50 para frente)
-  
+  const allDates = generateDates(100);
   const flatListRef = React.useRef<FlatList>(null);
 
-  // Função para rolar para o dia atual ao carregar
   useEffect(() => {
-    // Encontra o índice do dia atual
     const todayIndex = allDates.findIndex(day => day.date === moment().format('YYYY-MM-DD'));
     if (flatListRef.current && todayIndex !== -1) {
-      // Rola para centralizar (aproximadamente) o dia de hoje
       flatListRef.current.scrollToIndex({
         index: todayIndex,
         animated: false,
-        viewPosition: 0.5, // Tenta centralizar
+        viewPosition: 0.5,
       });
     }
   }, []);
@@ -132,7 +131,6 @@ export default function Tutorial() {
       >
         <Text style={[styles.text, styles.copseFont]}>SEU DIA</Text>
 
-        {/* --- Carrossel de Dias --- */}
         <View style={styles.calendarContainer}>
           <FlatList
             ref={flatListRef}
@@ -147,17 +145,15 @@ export default function Tutorial() {
             )}
             horizontal
             showsHorizontalScrollIndicator={false}
-            initialNumToRender={14} // Otimização
-            maxToRenderPerBatch={7} // Otimização
-            // Necessário para usar scrollToIndex sem precisar medir os itens dinamicamente
+            initialNumToRender={14}
+            maxToRenderPerBatch={7}
             getItemLayout={(data, index) => ({
-                length: DAY_WIDTH,
-                offset: DAY_WIDTH * index,
-                index,
+              length: DAY_WIDTH,
+              offset: DAY_WIDTH * index,
+              index,
             })}
           />
         </View>
-        {/* ------------------------- */}
 
         <View style={styles.buttonContainer}>
           <RoundButton
@@ -181,33 +177,26 @@ export default function Tutorial() {
   );
 }
 
-// --- Estilos Atualizados ---
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
   gradient: {
     flex: 1,
-    paddingTop: 25, // Adicionado padding superior para afastar o texto do topo da tela
+    paddingTop: 25,
   },
   text: {
     color: 'white',
     fontSize: 30,
     textAlign: 'center',
-    
-
-    marginBottom: 35, // Espaço entre o título e o calendário
+    marginBottom: 35,
   },
   copseFont: {
-    // Certifique-se de que a fonte 'Copse' está carregada
-    // Ex: fontFamily: 'Copse', 
+    // fontFamily: 'Copse',
   },
-  
-  // Estilos do Calendário (Novos)
   calendarContainer: {
-    height: 80, // Altura fixa para o carrossel de dias
-    marginBottom: 30, // Espaço após o calendário
+    height: 80,
+    marginBottom: 30,
   },
   dayItem: {
     width: 65,
@@ -217,31 +206,29 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     borderRadius: 10,
     marginHorizontal: 6,
-    backgroundColor: 'rgba(255, 255, 255, 0.2)', // Fundo dos dias
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
   },
   selectedDayItem: {
-    backgroundColor: '#FFFEE5', // Fundo para o dia selecionado
+    backgroundColor: '#FFFEE5',
   },
   todayDayItem: {
     borderWidth: 2,
-    borderColor: '#c04cfd', // Borda para o dia de hoje
+    borderColor: '#c04cfd',
   },
   dayText: {
     color: 'white',
     fontWeight: 'bold',
   },
   selectedDayText: {
-    color: '#343434', // Cor do texto para o dia selecionado
+    color: '#343434',
   },
   dayOfWeekText: {
     fontSize: 12,
-    textTransform: 'capitalize', // Primeira letra maiúscula
+    textTransform: 'capitalize',
   },
   dayOfMonthText: {
     fontSize: 20,
   },
-  
-  // Estilos dos Botões (Mantidos/Ajustados)
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
@@ -251,8 +238,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     position: 'absolute',
     bottom: 0,
-    // Garante que os botões fiquem acima de outros elementos na parte inferior
-    zIndex: 1, 
+    zIndex: 1,
   },
   buttonWrapper: {
     alignItems: 'center',
