@@ -20,7 +20,7 @@ type RegisterFormValues = {
   confirmPassword: string;
 };
 
-export default function Cadastrar() {
+export default function SignUpScreen() {
   const handleRegister = async (values: RegisterFormValues) => {
     if (values.password !== values.confirmPassword) {
       alert('As senhas não coincidem!');

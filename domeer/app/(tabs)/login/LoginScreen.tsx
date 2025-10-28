@@ -16,7 +16,7 @@ type LoginFormValues = {
   password: string;
 };
 
-export default function Login() {
+export default function LoginScreen() {
   const handleLogin = (values: LoginFormValues) =>{
     console.log("Name:", values.name);
     console.log("Password:", values.password);
