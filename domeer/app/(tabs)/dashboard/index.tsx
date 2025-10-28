@@ -1,5 +1,5 @@
 import { LinearGradient } from 'expo-linear-gradient';
-import { Image, ScrollView,Text, StyleSheet, View } from 'react-native';
+import { Image, ScrollView,Text, StyleSheet, View, TouchableOpacity } from 'react-native';
 
 const imageLogo = require('../../../assets/images/Domeer-logo.png');
 const imageicone = require('../../../assets/images/icone-user.jpg');
@@ -33,7 +33,7 @@ export default function Tutorial() {
   
 
   <View style={styles.squaresContainer}>
-    <View style={styles.GatoSquare}>
+  <TouchableOpacity style={styles.GatoSquare} onPress={() => {}}>
 
     <Image 
         source={imagebobao} 
@@ -49,9 +49,10 @@ export default function Tutorial() {
     <Text style={[styles.copseText, styles.headerText, styles.GatoSquareText]}>
           SEU MÊS
         </Text>
+        </TouchableOpacity>
         
     </View>
-    <View style={styles.GatoSquare2}>
+    <TouchableOpacity style={styles.GatoSquare2} onPress={() => {}}>
 
     <Image 
         source={imagemes} 
@@ -61,9 +62,9 @@ export default function Tutorial() {
 <Text style={[styles.copseText, styles.headerText, styles.GatoSquare2Text]}>
           SEU DIA
         </Text>
-
-    </View>
-</View>
+    <TouchableOpacity/>
+    
+  </View>
 
 <Image 
         source={imagemetas} 
