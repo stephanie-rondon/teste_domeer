@@ -1,5 +1,5 @@
 import { LinearGradient } from 'expo-linear-gradient';
-import { Image, ScrollView,Text, StyleSheet, View, TouchableOpacity } from 'react-native';
+import { Image, ScrollView, Text, StyleSheet, View, TouchableOpacity } from 'react-native';
 
 const imageLogo = require('../../../assets/images/Domeer-logo.png');
 const imageicone = require('../../../assets/images/icone-user.jpg');
@@ -9,79 +9,43 @@ const imagemes = require('../../../assets/images/Gatomes.png');
 const imagemetas = require('../../../assets/images/Gatometas.png');
 const imagegrafico = require('../../../assets/images/gatopendurado.png');
 
- 
-
 export default function Tutorial() {
-
   return (
     <LinearGradient
-      colors={['rgba(94, 43, 255, 1)', 'rgba(252, 109, 171, 1)']} //252, 109, 171, 1
+      colors={['rgba(94, 43, 255, 1)', 'rgba(252, 109, 171, 1)']}
       locations={[0.49, 0]}
       style={styles.container}
     >
-       <ScrollView contentContainerStyle={styles.RolarContent}>
-
-      <Image 
-        source={imageLogo}
-        style={styles.imageStyle}
-      />
-     <Image 
-        source={imageicone} 
-        style={styles.imageGrafico2} 
-      />
-
-  
-
-  <View style={styles.squaresContainer}>
-  <TouchableOpacity style={styles.GatoSquare} onPress={() => {}}>
-
-    <Image 
-        source={imagebobao} 
-        style={styles.imagebobao} 
-      />
-
-
-<Image 
-        source={imagedia} 
-        style={styles.imagedia} 
-      />
-
-    <Text style={[styles.copseText, styles.headerText, styles.GatoSquareText]}>
-          SEU MÊS
-        </Text>
-        </TouchableOpacity>
+      <ScrollView contentContainerStyle={styles.RolarContent}>
+        <Image source={imageLogo} style={styles.imageStyle} />
+        <Image source={imageicone} style={styles.imageGrafico2} />
         
-    </View>
-    <TouchableOpacity style={styles.GatoSquare2} onPress={() => {}}>
+        <View style={styles.squaresContainer}>
+          <TouchableOpacity style={styles.GatoSquare} onPress={() => {}}>
+            <Image source={imagebobao} style={styles.imagebobao} />
+            <Image source={imagedia} style={styles.imagedia} />
+            <Text style={[styles.copseText, styles.headerText, styles.GatoSquareText]}>
+              SEU MÊS
+            </Text>
+          </TouchableOpacity>
 
-    <Image 
-        source={imagemes} 
-        style={styles.imagemes} 
-      />
+          <TouchableOpacity style={styles.GatoSquare2} onPress={() => {}}>
+            <Image source={imagemes} style={styles.imagemes} />
+            <Text style={[styles.copseText, styles.headerText, styles.GatoSquare2Text]}>
+              SEU DIA
+            </Text>
+          </TouchableOpacity>
+        </View>
 
-<Text style={[styles.copseText, styles.headerText, styles.GatoSquare2Text]}>
-          SEU DIA
-        </Text>
-    <TouchableOpacity/>
-    
-  </View>
-
-<Image 
-        source={imagemetas} 
-        style={styles.imagemetas} 
-      />
-      <Text style={[styles.copseText, styles.headerText, styles.metasText]}>
+        <Image source={imagemetas} style={styles.imagemetas} />
+        <Text style={[styles.copseText, styles.headerText, styles.metasText]}>
           METAS CONCLUIDAS
         </Text>
 
-<View style={styles.GraficoSquare}>
-
-<Image 
-        source={imagegrafico} 
-        style={styles.imagegrafico} 
-      />
-</View>
-</ScrollView>
+        <View style={styles.GraficoSquare}>
+          <Image source={imagegrafico} style={styles.imagegrafico} />
+        </View>
+      </ScrollView>
     </LinearGradient>
   );
 }
