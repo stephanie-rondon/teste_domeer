@@ -1,5 +1,16 @@
 import { LinearGradient } from 'expo-linear-gradient';
+import { useNavigation } from '@react-navigation/native';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { Image, ScrollView, Text, StyleSheet, View, TouchableOpacity } from 'react-native';
+
+
+
+type RootStackParamList = {
+  Login: undefined;
+  Signup: undefined;
+  Home: undefined;
+  Mes: undefined;
+};
 
 const imageLogo = require('../../../assets/images/Domeer-logo.png');
 const imageicone = require('../../../assets/images/icone-user.jpg');
@@ -9,7 +20,8 @@ const imagemes = require('../../../assets/images/Gatomes.png');
 const imagemetas = require('../../../assets/images/Gatometas.png');
 const imagegrafico = require('../../../assets/images/gatopendurado.png');
 
-export default function Tutorial() {
+export default function HomeScreen() {
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>(); 
   return (
     <LinearGradient
       colors={['rgba(94, 43, 255, 1)', 'rgba(252, 109, 171, 1)']}
@@ -19,9 +31,9 @@ export default function Tutorial() {
       <ScrollView contentContainerStyle={styles.RolarContent}>
         <Image source={imageLogo} style={styles.imageStyle} />
         <Image source={imageicone} style={styles.imageGrafico2} />
-        
+
         <View style={styles.squaresContainer}>
-          <TouchableOpacity style={styles.GatoSquare} onPress={() => {}}>
+          <TouchableOpacity style={styles.GatoSquare} onPress={() => navigation.navigate('Mes')}>
             <Image source={imagebobao} style={styles.imagebobao} />
             <Image source={imagedia} style={styles.imagedia} />
             <Text style={[styles.copseText, styles.headerText, styles.GatoSquareText]}>

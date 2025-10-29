@@ -5,6 +5,8 @@ import { StyleSheet } from 'react-native';
 
 import SignUpScreen from "../app/(tabs)/cadastro/SignUpScreen";
 import LoginScreen from "../app/(tabs)/login/LoginScreen";
+import HomeScreen from "../app/(tabs)/dashboard/index";
+import MesScreen from "../app/(tabs)/dashboard/mes/index"; 
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +18,8 @@ const AppStack = () => {
         }}>
             <Stack.Screen name="Login" component={LoginScreen}/>
             <Stack.Screen name="Signup" component={SignUpScreen}/>
+            <Stack.Screen name="Home" component={HomeScreen} />
+            <Stack.Screen name="Mes" component={MesScreen} />
 
         </Stack.Navigator>
     </NavigationContainer>

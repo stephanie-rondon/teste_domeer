@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 
 const imageGrafico = require('../../../../assets/images/Gato-espiando.png'); 
 
-export default function Tutorial() {
+export default function MesScreen() {
 
   return (
     <LinearGradient

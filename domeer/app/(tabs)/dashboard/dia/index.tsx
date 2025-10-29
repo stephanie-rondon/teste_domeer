@@ -15,7 +15,7 @@ interface RoundButtonProps {
   onPress: () => void;
   label: string;
 }
-
+//Seu dia
 interface DayData {
   date: string;
   dayOfWeek: string;
@@ -129,7 +129,7 @@ export default function Tutorial() {
         locations={[0, 0.6]}
         style={styles.gradient}
       >
-        <Text style={[styles.text, styles.copseFont]}>SEU DIA</Text>
+        <Text style={[styles.text, styles.copseText, styles.headerText]}>Seu dia</Text>
 
         <View style={styles.calendarContainer}>
           <FlatList
@@ -264,4 +264,12 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     textAlign: 'center',
   },
+  copseText: {
+    fontFamily: 'Copse', 
+    fontWeight: 'normal', 
+  },
+  
+  headerText: {
+    fontSize: 33,
+  }
 });
