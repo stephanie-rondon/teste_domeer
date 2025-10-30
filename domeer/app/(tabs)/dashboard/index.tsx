@@ -1,9 +1,7 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
-import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import type { StackNavigationProp } from '@react-navigation/stack';
 import { Image, ScrollView, Text, StyleSheet, View, TouchableOpacity } from 'react-native';
-
-
 
 type RootStackParamList = {
   Login: undefined;
@@ -21,7 +19,8 @@ const imagemetas = require('../../../assets/images/Gatometas.png');
 const imagegrafico = require('../../../assets/images/gatopendurado.png');
 
 export default function HomeScreen() {
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>(); 
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+
   return (
     <LinearGradient
       colors={['rgba(94, 43, 255, 1)', 'rgba(252, 109, 171, 1)']}
@@ -33,7 +32,13 @@ export default function HomeScreen() {
         <Image source={imageicone} style={styles.imageGrafico2} />
 
         <View style={styles.squaresContainer}>
-          <TouchableOpacity style={styles.GatoSquare} onPress={() => navigation.navigate('Mes')}>
+          <TouchableOpacity
+            style={styles.GatoSquare}
+            onPress={() => {
+              console.log('Botão MÊS clicado');
+              navigation.navigate('Mes');
+            }}
+          >
             <Image source={imagebobao} style={styles.imagebobao} />
             <Image source={imagedia} style={styles.imagedia} />
             <Text style={[styles.copseText, styles.headerText, styles.GatoSquareText]}>
@@ -66,158 +71,117 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-
   RolarContent: {
-  flexGrow: 1,
-  alignItems: 'center',
-  paddingBottom: 90,
-  },
-
-  headerContainer: {
-    paddingTop: 25, 
-    width: '80%', 
+    flexGrow: 1,
     alignItems: 'center',
-    marginBottom: 20,
+    paddingBottom: 90,
   },
-
   squaresContainer: {
-     flexDirection: 'row',
-     width: '90%',
-     justifyContent: 'space-between',
-     marginTop: 20,
-    },
-
-    text: {
-      color: 'white',
-      fontSize: 20,
-      fontWeight: 'bold',
-    },
-  
-    copseText: {
-      fontFamily: 'Copse', 
-      fontWeight: 'normal', 
-    },
-
-  imageStyle: {
-
-    width: 300, 
-    height: 150, 
-    resizeMode: 'contain',
-    marginTop: -13, 
+    flexDirection: 'row',
+    width: '90%',
+    justifyContent: 'space-between',
+    marginTop: 20,
   },
-
   GatoSquare: {
-     width: '45%',
-     height: 150, 
-     backgroundColor: '#FFFEE5',
-     borderRadius: 15,
-     position: 'relative',
-     justifyContent: 'flex-end',
-     alignItems: 'center',
-     paddingBottom: 10,
+    zIndex: 1,
+    width: '45%',
+    height: 150,
+    backgroundColor: '#FFFEE5',
+    borderRadius: 15,
+    position: 'relative',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    paddingBottom: 10,
   },
-
   GatoSquare2: {
     width: '45%',
-  height: 150, 
-  backgroundColor: '#FFFEE5',
-   borderRadius: 15,
-   position: 'relative',
-   justifyContent: 'flex-end',
-   alignItems: 'center',
-   paddingBottom: 10,
+    height: 150,
+    backgroundColor: '#FFFEE5',
+    borderRadius: 15,
+    position: 'relative',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    paddingBottom: 10,
   },
-
   GatoSquareText: {
     color: '#ffffff',
     fontSize: 20,
     top: 50,
   },
-
-  metasText: {
-    color: '#ffffff',
-    fontSize: 15,
-    top: -140,
-  },
-
   GatoSquare2Text: {
     color: '#ffffff',
     fontSize: 20,
     top: 50,
   },
-
-  imagemetas: {
-    width: 460,
-     height: 190,
-     left: -5, 
-     top: 10,
+  metasText: {
+    color: '#ffffff',
+    fontSize: 15,
+    top: -140,
   },
-  
-  imagegrafico: {
-    width: 200,
-     height: 200,
-    left: -150,
-    top: -80,
-
+  imageStyle: {
+    width: 300,
+    height: 150,
+    resizeMode: 'contain',
+    marginTop: -13,
   },
-  GraficoSquare:{
-    width: '80%',
-    height: 270, 
-    backgroundColor: '#FFFEE5', 
-   borderRadius: 59,
-    marginTop: 50,
-   justifyContent: 'center',
-   alignItems: 'center',
+  imageGrafico2: {
+    position: 'absolute',
+    top: 20,
+    left: 20,
+    width: 50,
+    height: 50,
+    borderRadius: 20,
   },
-
-  imageGrafico2:{
-   position: 'absolute',
-   top: 20,
-   left: 20,
-   width: 50,
-   height: 50,
-   borderRadius : 20,
-  },
-
-  imagebobao:{
+  imagebobao: {
     position: 'absolute',
     top: -60,
     left: 5,
     width: 180,
     height: 90,
-    borderRadius : 20,
-   },
-
-   imagemes:{
+    borderRadius: 20,
+  },
+  imagemes: {
     position: 'absolute',
     top: -44,
     left: 10,
     width: 170,
     height: 230,
-    borderRadius : 20,
-   },
-
-   imagedia:{
+    borderRadius: 20,
+  },
+  imagedia: {
     position: 'absolute',
     top: -45,
     left: 20,
     width: 170,
     height: 230,
-    borderRadius : 20,
-   },
-
-  Text: {
-    color: 'white',
-    fontSize: 20,
-    fontWeight: 'bold',
+    borderRadius: 20,
   },
-
-  CopseText: {
-    fontFamily: 'Copse', 
-    fontWeight: 'normal', 
+  imagemetas: {
+    width: 460,
+    height: 190,
+    left: -5,
+    top: 10,
   },
-  
+  imagegrafico: {
+    width: 200,
+    height: 200,
+    left: -150,
+    top: -80,
+  },
+  GraficoSquare: {
+    width: '80%',
+    height: 270,
+    backgroundColor: '#FFFEE5',
+    borderRadius: 59,
+    marginTop: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  copseText: {
+    fontFamily: 'Copse',
+    fontWeight: 'normal',
+  },
   headerText: {
     fontSize: 33,
-  }
+  },
 });
