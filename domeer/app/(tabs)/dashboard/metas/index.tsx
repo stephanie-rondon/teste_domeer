@@ -1,6 +1,6 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 export default function TelaComDegrade() {
   return (
@@ -9,7 +9,8 @@ export default function TelaComDegrade() {
       locations={[0, 0.6]}
       style={styles.container}
     >
-      <Text style={styles.texto}>metas</Text>
+      <Text style={[styles.texto, styles.copseText, styles.headerText]}>Metas</Text>
+      <View style={styles.underline}></View>
     </LinearGradient>
   );
 }
@@ -26,4 +27,19 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
       textAlign: 'center',
     },
+
+    underline: {
+      height: 2, 
+      width: '100%', 
+      backgroundColor: 'white', 
+      marginTop: 5,
+    },
+    copseText: {
+      fontFamily: 'Copse', 
+      fontWeight: 'normal', 
+    },
+    
+    headerText: {
+      fontSize: 33,
+    }
   });
