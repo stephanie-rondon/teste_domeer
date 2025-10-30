@@ -2,13 +2,15 @@ import { FontAwesome } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
-import { Alert, Dimensions, FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Alert, Dimensions, FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+
 
 import 'moment/locale/pt-br';
 moment.locale('pt-br');
 
 const { width } = Dimensions.get('window');
 const DAY_WIDTH = width / 7;
+const gatodeitado = require('../../../../assets/images/gato-deitado.png'); 
 
 interface RoundButtonProps {
   iconName: keyof typeof FontAwesome.glyphMap;
@@ -132,6 +134,7 @@ export default function Tutorial() {
         <Text style={[styles.text, styles.copseText, styles.headerText]}>Seu dia</Text>
 
         <View style={styles.calendarContainer}>
+
           <FlatList
             ref={flatListRef}
             data={allDates}
@@ -154,6 +157,12 @@ export default function Tutorial() {
             })}
           />
         </View>
+
+        <Image
+         source={gatodeitado} 
+         style={styles.imagedeitado}
+         resizeMode="contain"
+        />
 
         <View style={styles.buttonContainer}>
           <RoundButton
@@ -178,6 +187,13 @@ export default function Tutorial() {
 }
 
 const styles = StyleSheet.create({
+
+  imagedeitado: {
+    width: '100%',
+    height: 170,
+    marginBottom: 20,
+  },
+  
   container: {
     flex: 1,
   },
