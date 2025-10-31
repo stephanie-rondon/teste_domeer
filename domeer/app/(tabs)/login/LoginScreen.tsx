@@ -24,7 +24,7 @@ export default function LoginScreen() {
 
   return (
     <LinearGradient
-          colors={['#5e2bff80', '#fc6dab']}
+          colors={['#5e2bff', '#fc6dab']}
           style={styles.container}
         >
       <Text style={styles.title}>Vamos fazer o login?</Text>

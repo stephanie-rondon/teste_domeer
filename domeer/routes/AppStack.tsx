@@ -7,6 +7,7 @@ import SignUpScreen from "../app/(tabs)/cadastro/SignUpScreen";
 import LoginScreen from "../app/(tabs)/login/LoginScreen";
 import HomeScreen from "../app/(tabs)/dashboard/index";
 import MesScreen from "../app/(tabs)/dashboard/mes/index";
+import UserScreen from "../app/(tabs)/dashboard/usuario/index";
 
 const Stack = createStackNavigator();
 
@@ -16,6 +17,7 @@ const AppStack = () => {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Signup" component={SignUpScreen} />
+        <Stack.Screen name="User" component={UserScreen} />
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Mes" component={MesScreen} />
       </Stack.Navigator>

@@ -2,7 +2,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { Botao } from '../../../../components/ui/Botao.tsx';
 
-export default function User() {
+export default function UserScreen() {
   const nomeUsuario = 'Joao Silva';
   const avatarUri = 'https:';
 

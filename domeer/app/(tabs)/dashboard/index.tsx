@@ -29,14 +29,20 @@ export default function HomeScreen() {
     >
       <ScrollView contentContainerStyle={styles.RolarContent}>
         <Image source={imageLogo} style={styles.imageStyle} />
-        <Image source={imageicone} style={styles.imageGrafico2} />
 
+        <TouchableOpacity
+  style={styles.imageGrafico2}
+  onPress={() => {
+    navigation.navigate('Login');
+  }}
+>
+        <Image source={imageicone} style={styles.imageGrafico2} />
+        </TouchableOpacity>
         <View style={styles.squaresContainer}>
           <TouchableOpacity
             style={styles.GatoSquare}
             onPress={() => {
-              console.log('Botão MÊS clicado');
-              navigation.navigate('Mes');
+              navigation.navigate('User');
             }}
           >
             <Image source={imagebobao} style={styles.imagebobao} />
