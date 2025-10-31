@@ -31,18 +31,17 @@ export default function HomeScreen() {
         <Image source={imageLogo} style={styles.imageStyle} />
 
         <TouchableOpacity
-  style={styles.imageGrafico2}
+  style={styles.imageIcone}
   onPress={() => {
     navigation.navigate('Login');
   }}
 >
-        <Image source={imageicone} style={styles.imageGrafico2} />
+        <Image source={imageicone} style={styles.imageIcone} />
         </TouchableOpacity>
         <View style={styles.squaresContainer}>
           <TouchableOpacity
             style={styles.GatoSquare}
             onPress={() => {
-              navigation.navigate('User');
             }}
           >
             <Image source={imagebobao} style={styles.imagebobao} />
@@ -130,10 +129,10 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     marginTop: -13,
   },
-  imageGrafico2: {
+  imageIcone: {
     position: 'absolute',
-    top: 20,
-    left: 20,
+    top: 10,
+    left: 10,
     width: 50,
     height: 50,
     borderRadius: 20,
